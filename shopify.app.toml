@@ -3,7 +3,7 @@
 client_id = "e51e9ed96161c321e81da0c5d07188e4"
 name = "marketing"
 handle = "marketing-67"
-application_url = "https://charms-associate-scottish-switched.trycloudflare.com"
+application_url = "https://residential-albums-fancy-politicians.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://charms-associate-scottish-switched.trycloudflare.com/auth/callback",
-  "https://charms-associate-scottish-switched.trycloudflare.com/auth/shopify/callback",
-  "https://charms-associate-scottish-switched.trycloudflare.com/api/auth/callback"
+  "https://residential-albums-fancy-politicians.trycloudflare.com/auth/callback",
+  "https://residential-albums-fancy-politicians.trycloudflare.com/auth/shopify/callback",
+  "https://residential-albums-fancy-politicians.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
