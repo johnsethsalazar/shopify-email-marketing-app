@@ -1,6 +1,6 @@
 import { Button, InlineGrid, Layout, LegacyCard, Page, Tabs, Text } from '@shopify/polaris'
 import React, { useCallback, useState } from 'react'
-import Test from '~/components/Test'
+import { tabs } from '~/utils/tabs'
 
 type Props = {}
 
@@ -9,32 +9,8 @@ const CampaignsPage = (props: Props) => {
 
   const handleTabChange = useCallback((selectedTabIndex: number) => setSelected(selectedTabIndex), [])
 
-  const tabs = [
-    {
-      id: 'all-customers',
-      content: "All",
-      panelID: "all-customers-content-one",
-      component: <Test></Test>
-    },
-    
-    {
-      id: 'accepts-marketing-1',
-      content: "Ongoing",
-      panelID: "accepts-marketing-content-1",
-    },
-    
-    {
-      id: 'repeat-customers',
-      content: "Draft",
-      panelID: "repeat-customers-content-one"
-    },
-    
-    {
-      id: 'prospects-1',
-      content: "Completed",
-      panelID: "prospects-content-1"
-    }
-  ]
+  
+
   return (
     <Page>
       <Layout>
