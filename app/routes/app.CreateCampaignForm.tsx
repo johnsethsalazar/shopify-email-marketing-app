@@ -12,7 +12,7 @@ import React, { useCallback, useState } from "react";
 type Props = {};
 
 const CreateCampaignForm = (props: Props) => {
-  const [activate, setActivate] = useState(false);
+  const [activate, setActivate] = useState(true);
 
   const handleChange = useCallback(() => setActivate(!activate), [activate]);
 
@@ -56,6 +56,12 @@ const CreateCampaignForm = (props: Props) => {
                   />
                   <TextField
                     label="To"
+                    value={value}
+                    onChange={handleChangeText}
+                    autoComplete="off"
+                  />
+                  <TextField
+                    label="Corporation"
                     value={value}
                     onChange={handleChangeText}
                     autoComplete="off"
