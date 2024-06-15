@@ -1,22 +1,35 @@
-import { Button, InlineGrid, Layout, LegacyCard, Page, Tabs, Text } from '@shopify/polaris'
-import React, { useCallback, useState } from 'react'
-import { tabs } from '~/utils/tabs'
+import {
+  Button,
+  InlineGrid,
+  Layout,
+  LegacyCard,
+  Page,
+  Tabs,
+  Text,
+} from "@shopify/polaris";
+import React, { useCallback, useState } from "react";
+import { tabs } from "~/utils/tabs";
+import CreateCampaignForm from "./app.CreateCampaignForm";
 
-type Props = {}
+
+type Props = {};
 
 const CampaignsPage = (props: Props) => {
-  const [selected, setSelected] = useState(0)
+  const [selected, setSelected] = useState(0);
 
-  const handleTabChange = useCallback((selectedTabIndex: number) => setSelected(selectedTabIndex), [])
-
-  
+  const handleTabChange = useCallback(
+    (selectedTabIndex: number) => setSelected(selectedTabIndex),
+    [],
+  );
 
   return (
     <Page>
       <Layout>
         <Layout.Section>
           <InlineGrid columns={2}>
-            <Text variant='heading3xl' as='h2'>Campaigns</Text>
+            <Text variant="heading3xl" as="h2">
+              Campaigns
+            </Text>
             <Button>Create New</Button>
           </InlineGrid>
         </Layout.Section>
@@ -29,9 +42,12 @@ const CampaignsPage = (props: Props) => {
             </Tabs>
           </LegacyCard>
         </Layout.Section>
+        <Layout.Section>
+          <CreateCampaignForm />
+        </Layout.Section>
       </Layout>
     </Page>
-  )
-}
+  );
+};
 
-export default CampaignsPage
+export default CampaignsPage;
