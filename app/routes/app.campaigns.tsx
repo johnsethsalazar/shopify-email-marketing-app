@@ -11,7 +11,6 @@ import React, { useCallback, useState } from "react";
 import { tabs } from "~/utils/tabs";
 import CreateCampaignForm from "./app.CreateCampaignForm";
 
-
 type Props = {};
 
 const CampaignsPage = (props: Props) => {
@@ -21,6 +20,8 @@ const CampaignsPage = (props: Props) => {
     (selectedTabIndex: number) => setSelected(selectedTabIndex),
     [],
   );
+
+  const [activate, setActivate] = useState(false);
 
   return (
     <Page>
@@ -43,7 +44,7 @@ const CampaignsPage = (props: Props) => {
           </LegacyCard>
         </Layout.Section>
         <Layout.Section>
-          <CreateCampaignForm />
+          <CreateCampaignForm activate={activate} setActivate={setActivate} />
         </Layout.Section>
       </Layout>
     </Page>

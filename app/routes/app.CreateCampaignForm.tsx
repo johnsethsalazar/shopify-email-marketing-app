@@ -1,4 +1,5 @@
-import { Form } from "@remix-run/react";
+import { ActionFunction } from "@remix-run/node";
+import { Form, useActionData, useSubmit } from "@remix-run/react";
 import {
   Button,
   Frame,
@@ -9,10 +10,16 @@ import {
 } from "@shopify/polaris";
 import React, { useCallback, useState } from "react";
 
-type Props = {};
+type CreateCampaignFormProps = {
+  activate: boolean;
+  setActivate: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const CreateCampaignForm = (props: Props) => {
-  const [activate, setActivate] = useState(true);
+export const action: ActionFunction = async ({ request }) => {
+  
+};
+
+const CreateCampaignForm:React.FC<CreateCampaignFormProps> = ({activate, setActivate}) => {
 
   const handleChange = useCallback(() => setActivate(!activate), [activate]);
 
@@ -25,6 +32,12 @@ const CreateCampaignForm = (props: Props) => {
     [],
   );
 
+  const submit = useSubmit ();
+  const actionData = useActionData<typeof action>()
+  const sendEmails = () => submit({}, {replace: true, method: 'POST'})
+
+  console.log(actionData, 'createCampaignForm')
+
   return (
     <Page>
       <Frame>
@@ -35,7 +48,7 @@ const CreateCampaignForm = (props: Props) => {
           title="Create New Email Campaign"
           primaryAction={{
             content: "Send",
-            onAction: () => {},
+            onAction: sendEmails,
           }}
           secondaryActions={[
             {
