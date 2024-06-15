@@ -12,7 +12,7 @@ import React, { useCallback, useState } from "react";
 type Props = {};
 
 const CreateCampaignForm = (props: Props) => {
-  const [activate, setActivate] = useState(true);
+  const [activate, setActivate] = useState(false);
 
   const handleChange = useCallback(() => setActivate(!activate), [activate]);
 

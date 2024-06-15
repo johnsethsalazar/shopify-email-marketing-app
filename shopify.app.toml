@@ -3,7 +3,7 @@
 client_id = "e51e9ed96161c321e81da0c5d07188e4"
 name = "marketing"
 handle = "marketing-67"
-application_url = "https://yard-blade-forces-def.trycloudflare.com"
+application_url = "https://build-brighton-systems-high.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://yard-blade-forces-def.trycloudflare.com/auth/callback",
-  "https://yard-blade-forces-def.trycloudflare.com/auth/shopify/callback",
-  "https://yard-blade-forces-def.trycloudflare.com/api/auth/callback"
+  "https://build-brighton-systems-high.trycloudflare.com/auth/callback",
+  "https://build-brighton-systems-high.trycloudflare.com/auth/shopify/callback",
+  "https://build-brighton-systems-high.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
