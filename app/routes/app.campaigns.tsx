@@ -32,6 +32,7 @@ const CampaignsPage = (props: Props) => {
             </Text>
           </InlineGrid>
         </Layout.Section>
+        <br />
         <Layout.Section>
           <LegacyCard>
             <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>

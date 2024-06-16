@@ -1,6 +1,6 @@
 import { render } from "@react-email/components";
-import { ActionFunction, json } from "@remix-run/node";
-import { Form, useActionData, useSubmit } from "@remix-run/react";
+import { ActionFunction } from "@remix-run/node";
+import { Form, json, useActionData, useSubmit } from "@remix-run/react";
 import {
   Button,
   Frame,
@@ -41,7 +41,7 @@ export const action: ActionFunction = async ({ request }) => {
 
 const CreateCampaignForm:React.FC<CreateCampaignFormProps> = ({activate, setActivate}) => {
 
-  const handleChange = useCallback(() => setActivate(!activate), [activate]);
+  const handleChange = useCallback(() => setActivate(!activate), [activate, setActivate]);
 
   const activator = <Button onClick={handleChange}>Create New</Button>;
 
@@ -78,7 +78,7 @@ const CreateCampaignForm:React.FC<CreateCampaignFormProps> = ({activate, setActi
           ]}
         >
           <Modal.Section>
-            <Form>
+            <Form onSubmit={sendEmails} method="post" action="/app/createCampaignForm">
               <Layout>
                 <Layout.Section>
                   <TextField
