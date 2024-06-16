@@ -11,6 +11,7 @@ import {
 } from "@shopify/polaris";
 import React, { useCallback, useState } from "react";
 import { Resend } from "resend";
+import VercelInviteUserEmail from "~/emails/custom";
 import { EmailNew } from "~/emails/new";
 
 const resend = new Resend('re_5fC25nUy_JsYGJ5c19CgryygSmx7amVoY');
@@ -119,6 +120,9 @@ const CreateCampaignForm:React.FC<CreateCampaignFormProps> = ({activate, setActi
                   />
                   <br />
                   <Button submit>Send</Button>
+                </Layout.Section>
+                <Layout.Section>
+                  <VercelInviteUserEmail />
                 </Layout.Section>
               </Layout>
             </Form>

@@ -3,7 +3,7 @@
 client_id = "e51e9ed96161c321e81da0c5d07188e4"
 name = "marketing"
 handle = "marketing-67"
-application_url = "https://fi-live-with-ky.trycloudflare.com"
+application_url = "https://directories-decreased-muze-missing.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://fi-live-with-ky.trycloudflare.com/auth/callback",
-  "https://fi-live-with-ky.trycloudflare.com/auth/shopify/callback",
-  "https://fi-live-with-ky.trycloudflare.com/api/auth/callback"
+  "https://directories-decreased-muze-missing.trycloudflare.com/auth/callback",
+  "https://directories-decreased-muze-missing.trycloudflare.com/auth/shopify/callback",
+  "https://directories-decreased-muze-missing.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
