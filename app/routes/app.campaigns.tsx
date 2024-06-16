@@ -1,5 +1,4 @@
 import {
-  Button,
   InlineGrid,
   Layout,
   LegacyCard,
@@ -31,7 +30,6 @@ const CampaignsPage = (props: Props) => {
             <Text variant="heading3xl" as="h2">
               Campaigns
             </Text>
-            <Button>Create New</Button>
           </InlineGrid>
         </Layout.Section>
         <Layout.Section>

@@ -1,4 +1,5 @@
-import { ActionFunction } from "@remix-run/node";
+import { render } from "@react-email/components";
+import { ActionFunction, json } from "@remix-run/node";
 import { Form, useActionData, useSubmit } from "@remix-run/react";
 import {
   Button,
@@ -9,6 +10,12 @@ import {
   TextField,
 } from "@shopify/polaris";
 import React, { useCallback, useState } from "react";
+import { Resend } from "resend";
+import { EmailNew } from "~/emails/new";
+
+const resend = new Resend('re_5fC25nUy_JsYGJ5c19CgryygSmx7amVoY');
+
+const emailHtml = render(<EmailNew url={''} />)
 
 type CreateCampaignFormProps = {
   activate: boolean;
@@ -16,14 +23,27 @@ type CreateCampaignFormProps = {
 }
 
 export const action: ActionFunction = async ({ request }) => {
-  
+  console.log('hit')
+
+  const {data, error} = await resend.emails.send({
+    from: 'REMIX <onboarding@resend.dev>',
+    to: ['hello.ohsolutions@gmail.com'],
+    subject: 'Hello from Resend',
+    html: emailHtml,
+  })
+
+  if(error) {
+    return json({error}, 400)
+  }
+
+  return json({data}, 200)
 };
 
 const CreateCampaignForm:React.FC<CreateCampaignFormProps> = ({activate, setActivate}) => {
 
   const handleChange = useCallback(() => setActivate(!activate), [activate]);
 
-  const activator = <Button onClick={handleChange}>Open</Button>;
+  const activator = <Button onClick={handleChange}>Create New</Button>;
 
   const [value, setValue] = useState("default");
 
