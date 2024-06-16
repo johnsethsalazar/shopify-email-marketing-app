@@ -23,6 +23,7 @@ interface VercelInviteUserEmailProps {
   inviteLink?: string;
   inviteFromIp?: string;
   inviteFromLocation?: string;
+  content?: string;
 }
 
 const baseUrl = 'jhj'
@@ -37,6 +38,7 @@ export const VercelInviteUserEmail = ({
   teamImage = `${baseUrl}/static/vercel-team.png`,
   inviteLink = 'https://vercel.com/teams/invite/foo',
   inviteFromIp = '204.13.186.218',
+  content,
   inviteFromLocation = 'São Paulo, Brazil',
 }: VercelInviteUserEmailProps) => {
   const previewText = `Join ${invitedByUsername} on Vercel`;
@@ -78,7 +80,7 @@ export const VercelInviteUserEmail = ({
             </Text>
             <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
             <Text className="text-[#666666] text-[12px] leading-[24px]">
-              our webhook work successfuly
+              {content}
               <span className="text-black">{username} </span>.This invite was sent from{' '}
               <span className="text-black">{inviteFromIp}</span> located in{' '}
               <span className="text-black">{inviteFromLocation}</span>. If you were not

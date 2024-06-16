@@ -122,7 +122,7 @@ const CreateCampaignForm:React.FC<CreateCampaignFormProps> = ({activate, setActi
                   <Button submit>Send</Button>
                 </Layout.Section>
                 <Layout.Section>
-                  <VercelInviteUserEmail />
+                  <VercelInviteUserEmail content={value}/>
                 </Layout.Section>
               </Layout>
             </Form>
