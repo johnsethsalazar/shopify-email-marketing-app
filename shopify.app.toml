@@ -3,7 +3,7 @@
 client_id = "e51e9ed96161c321e81da0c5d07188e4"
 name = "marketing"
 handle = "marketing-67"
-application_url = "https://serve-muscles-calls-recipient.trycloudflare.com"
+application_url = "https://edit-became-require-dependent.trycloudflare.com"
 embedded = true
 
 [build]
@@ -13,13 +13,13 @@ include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "read_customers,write_customers,write_products"
 
 [auth]
 redirect_urls = [
-  "https://serve-muscles-calls-recipient.trycloudflare.com/auth/callback",
-  "https://serve-muscles-calls-recipient.trycloudflare.com/auth/shopify/callback",
-  "https://serve-muscles-calls-recipient.trycloudflare.com/api/auth/callback"
+  "https://edit-became-require-dependent.trycloudflare.com/auth/callback",
+  "https://edit-became-require-dependent.trycloudflare.com/auth/shopify/callback",
+  "https://edit-became-require-dependent.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

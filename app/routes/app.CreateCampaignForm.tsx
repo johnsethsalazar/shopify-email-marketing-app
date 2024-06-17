@@ -38,6 +38,8 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   return json({data}, 200)
+
+  
 };
 
 const CreateCampaignForm:React.FC<CreateCampaignFormProps> = ({activate, setActivate}) => {
@@ -55,9 +57,8 @@ const CreateCampaignForm:React.FC<CreateCampaignFormProps> = ({activate, setActi
 
   const submit = useSubmit ();
   const actionData = useActionData<typeof action>()
-  const sendEmails = () => submit({}, {replace: true, method: 'POST'})
-
   console.log(actionData, 'createCampaignForm')
+  const sendEmails = () => submit({}, {replace: true, method: 'POST'})
 
   return (
     <Page>
