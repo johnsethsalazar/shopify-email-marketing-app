@@ -1,4 +1,4 @@
-import { ActionFunction } from "@remix-run/node";
+import { ActionFunction, json } from "@remix-run/node";
 import { Form, useActionData, useSubmit } from "@remix-run/react";
 import { Button, Layout, Page, TextField } from "@shopify/polaris";
 import React, { useCallback, useState } from "react";
@@ -15,22 +15,33 @@ type Props = {};
 export const action: ActionFunction = async ({ request }) => {
   // Trigger Webhook
   const { admin, session } = await authenticate.admin(request);
-  const { shop, accessToken } = session;
-  console.log(shop, accessToken, "----shop and access token----");
-  const webhook = new admin.rest.resources.Webhook({ session: session });
+  // const { shop, accessToken } = session;
+  // console.log(shop, accessToken, "----shop and access token----");
+  // const webhook = new admin.rest.resources.Webhook({ session: session });
 
-  if (webhook) {
-    console.log(webhook, "-----webhook hit create user-----");
+  // if (webhook) {
+  //   console.log(webhook, "-----webhook hit create user-----");
 
-    webhook.address = "pubsub://projectName:topicName";
-    webhook.topic = "customers/create";
-    webhook.format = "json";
+  //   webhook.address = "pubsub://projectName:topicName";
+  //   webhook.topic = "customers/create";
+  //   webhook.format = "json";
 
-    console.log(webhook, "-----webhook hit create user-----");
-    await webhook.save();
+  //   console.log(webhook, "-----webhook hit create user-----");
+  //   await webhook.save();
+  // }
+
+  // return null;
+
+  const res = await admin.rest.resources.Webhook.delete({
+    session: session,
+    id: ''// ID from the console that is shown when clicking the send button in the automations tab
+  })
+
+  if(res){
+    console.log('deleted webhook')
+    return json({res}, 200)
   }
-
-  return null;
+  return null
 };
 
 const AutomationsPage = (props: Props) => {
