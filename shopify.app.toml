@@ -3,7 +3,7 @@
 client_id = "e51e9ed96161c321e81da0c5d07188e4"
 name = "marketing"
 handle = "marketing-67"
-application_url = "https://edit-became-require-dependent.trycloudflare.com"
+application_url = "https://booking-states-interface-removed.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_customers,write_customers,write_products"
 
 [auth]
 redirect_urls = [
-  "https://edit-became-require-dependent.trycloudflare.com/auth/callback",
-  "https://edit-became-require-dependent.trycloudflare.com/auth/shopify/callback",
-  "https://edit-became-require-dependent.trycloudflare.com/api/auth/callback"
+  "https://booking-states-interface-removed.trycloudflare.com/auth/callback",
+  "https://booking-states-interface-removed.trycloudflare.com/auth/shopify/callback",
+  "https://booking-states-interface-removed.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
