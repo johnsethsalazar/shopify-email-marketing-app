@@ -1,6 +1,6 @@
 import { Layout, Page } from '@shopify/polaris'
 import React from 'react'
-import StartSubscription from './app.subscriptionButton'
+import SubscriptionBtn from './app.subscriptionBtn'
 
 type Props = {}
 
@@ -8,7 +8,7 @@ const BillingsPage = (props: Props) => {
   return (
     <Page>
       <Layout.Section>
-        <StartSubscription />
+        <SubscriptionBtn />
       </Layout.Section>
     </Page>
   )
