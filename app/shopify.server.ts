@@ -2,12 +2,16 @@ import "@shopify/shopify-app-remix/adapters/node";
 import {
   ApiVersion,
   AppDistribution,
+  BillingInterval,
   DeliveryMethod,
   shopifyApp,
 } from "@shopify/shopify-app-remix/server";
 import { PrismaSessionStorage } from "@shopify/shopify-app-session-storage-prisma";
 import { restResources } from "@shopify/shopify-api/rest/admin/2024-04";
 import prisma from "./db.server";
+
+export const MONTHLY_PLAN = "Monthly subscription";
+export const ANNUAL_PLAN = "Annual subscription";
 
 const shopify = shopifyApp({
   apiKey: process.env.SHOPIFY_API_KEY,
@@ -28,11 +32,23 @@ const shopify = shopifyApp({
       deliveryMethod: DeliveryMethod.Http,
       callbackUrl: "/webhooks",
       callback: async (topic, shop, body, webhookId) => {
-        console.log('---product update---');
-        const payload  = JSON.parse(body);
+        console.log("---product update---");
+        const payload = JSON.parse(body);
         console.log(payload);
-        console.log("---product update---")
-      }
+        console.log("---product update---");
+      },
+    },
+  },
+  billing: {
+    [MONTHLY_PLAN]: {
+      amount: 5,
+      currencyCode: "USD",
+      interval: BillingInterval.Every30Days,
+    },
+    [ANNUAL_PLAN]: {
+      amount: 50,
+      currencyCode: "USD",
+      interval: BillingInterval.Annual,
     },
   },
   hooks: {
