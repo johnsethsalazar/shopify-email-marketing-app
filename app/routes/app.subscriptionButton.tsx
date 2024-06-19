@@ -2,11 +2,21 @@ import { ActionFunction } from '@remix-run/node'
 import { Form, useActionData, useSubmit } from '@remix-run/react'
 import { Button } from '@shopify/polaris'
 import React from 'react'
+import { MONTHLY_PLAN, authenticate } from '~/shopify.server'
 
 type Props = {}
 
 export const action: ActionFunction = async ({ request }) => {
-  
+  const {billing} = await authenticate.admin(request)
+
+  await billing.require({
+    plans: [MONTHLY_PLAN],
+    isTest: true, // Test - so no real charges
+    onFailure: async () => billing.request({
+      plans: [MONTHLY_PLAN],
+      isTest: true,
+    })
+  })
 }
 
 const StartSubscription = (props: Props) => {
