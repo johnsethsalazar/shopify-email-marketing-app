@@ -3,7 +3,7 @@
 client_id = "e51e9ed96161c321e81da0c5d07188e4"
 name = "marketing"
 handle = "marketing-67"
-application_url = "https://false-therefore-ambien-exclude.trycloudflare.com"
+application_url = "https://go-channels-intl-between.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_customers,write_customers,write_products"
 
 [auth]
 redirect_urls = [
-  "https://false-therefore-ambien-exclude.trycloudflare.com/auth/callback",
-  "https://false-therefore-ambien-exclude.trycloudflare.com/auth/shopify/callback",
-  "https://false-therefore-ambien-exclude.trycloudflare.com/api/auth/callback"
+  "https://go-channels-intl-between.trycloudflare.com/auth/callback",
+  "https://go-channels-intl-between.trycloudflare.com/auth/shopify/callback",
+  "https://go-channels-intl-between.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

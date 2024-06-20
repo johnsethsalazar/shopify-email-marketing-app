@@ -4,38 +4,40 @@ import { Button } from "@shopify/polaris";
 import React from "react";
 import { MONTHLY_PLAN, authenticate } from "~/shopify.server";
 import { action as subscriptionAction } from "~/routes/app.subscriptionBtn";
-export { subscriptionAction }
+export { subscriptionAction };
 
 type Props = {};
 
-export const action: ActionFunction =async ({ request }) => {
-    console.log('hitt')
-   const { billing } = await authenticate.admin(request)
+export const action: ActionFunction = async ({ request }) => {
+  console.log("hitt");
+  const { billing } = await authenticate.admin(request);
 
-   await billing.require({
+  await billing.require({
     plans: [MONTHLY_PLAN],
     isTest: true,
-    onFailure: async () => billing.request({
+    onFailure: async () =>
+      billing.request({
         plan: MONTHLY_PLAN,
-        isTest: true
-    })
-   })
+        isTest: true,
+      }),
+  });
 
-   return null
-}
-
+  return null;
+};
 
 const SubscriptionBtn = (props: Props) => {
+  const submit = useSubmit();
+  const actionData = useActionData<typeof action>();
+  console.log(actionData, "actionData");
+  const startSub = () => submit({}, { replace: true, method: "POST" });
 
-    const submit = useSubmit();
-    const actionData = useActionData<typeof action>()
-    console.log(actionData, 'actionData')
-    const startSub = () => submit({}, { replace: true, method: 'POST'})
-    
   return (
     <Form onSubmit={startSub} method="post" action="/app/subscriptionBtn">
-     <Button submit onClick={startSub}>Start Subscription</Button>
-   </Form>);
+      <Button submit onClick={startSub}>
+        Start Subscription
+      </Button>
+    </Form>
+  );
 };
 
 export default SubscriptionBtn;

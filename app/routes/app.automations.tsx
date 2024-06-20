@@ -1,9 +1,9 @@
 import { ActionFunction, json } from "@remix-run/node";
-import { Form, useActionData, useSubmit } from "@remix-run/react";
+import { Form, useActionData, useLoaderData, useSubmit } from "@remix-run/react";
 import { Button, Layout, Page, TextField } from "@shopify/polaris";
 import React, { useCallback, useState } from "react";
 import VercelInviteUserEmail from "~/emails/custom";
-import { authenticate } from "~/shopify.server";
+import { MONTHLY_PLAN, authenticate } from "~/shopify.server";
 
 type Props = {};
 
@@ -34,17 +34,38 @@ export const action: ActionFunction = async ({ request }) => {
 
   const res = await admin.rest.resources.Webhook.delete({
     session: session,
-    id: ''// ID from the console that is shown when clicking the send button in the automations tab
-  })
+    id: "", // ID from the console that is shown when clicking the send button in the automations tab
+  });
 
-  if(res){
-    console.log('deleted webhook')
-    return json({res}, 200)
+  if (res) {
+    console.log("deleted webhook");
+    return json({ res }, 200);
   }
-  return null
+  return null;
+};
+
+export const loader = async ({ request }: any) => {
+  console.log("hitt");
+  const { billing } = await authenticate.admin(request);
+
+  await billing.require({
+    plans: [MONTHLY_PLAN],
+    isTest: true,
+    onFailure: async () =>
+      billing.request({
+        plan: MONTHLY_PLAN,
+        isTest: true,
+      }),
+  });
+
+  return null;
 };
 
 const AutomationsPage = (props: Props) => {
+
+  const data: any = useLoaderData()
+  console.log(data, "data")
+
   const [value, setValue] = useState("default");
 
   const handleChangeText = useCallback(
