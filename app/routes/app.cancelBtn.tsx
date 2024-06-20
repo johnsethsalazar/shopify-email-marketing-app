@@ -12,7 +12,7 @@ export const action: ActionFunction =async ({ request }) => {
     console.log('hitt')
    const { billing } = await authenticate.admin(request)
 
-   await billing.require({
+   const billingCheck = await billing.require({
     plans: [MONTHLY_PLAN],
     isTest: true,
     onFailure: async () => billing.request({
@@ -21,11 +21,26 @@ export const action: ActionFunction =async ({ request }) => {
     })
    })
 
+   const subscription = billingCheck.appSubscriptions[0]
+
+   const cancelledSubscription = await billing.cancel({
+    subscriptionId: subscription.id,
+    isTest: true,
+    prorate: true
+   })
+
+   console.log('cancelled subscription', cancelledSubscription)
+
+   if(cancelledSubscription) {
+    console.log('-------cancel subscription message-------')
+    return cancelledSubscription
+   }
+
    return null
 }
 
 
-const SubscriptionBtn = (props: Props) => {
+const CancelBtn = (props: Props) => {
 
     const submit = useSubmit();
     const actionData = useActionData<typeof action>()
@@ -33,9 +48,9 @@ const SubscriptionBtn = (props: Props) => {
     const startSub = () => submit({}, { replace: true, method: 'POST'})
     
   return (
-    <Form onSubmit={startSub} method="post" action="/app/subscriptionBtn">
-     <Button submit onClick={startSub}>Start Subscription</Button>
+    <Form onSubmit={startSub} method="post" action="/app/cancelBtn">
+     <Button submit onClick={startSub}>Cancel Subscription</Button>
    </Form>);
 };
 
-export default SubscriptionBtn;
+export default CancelBtn;
